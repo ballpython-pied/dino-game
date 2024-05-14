@@ -8,6 +8,8 @@ import java.util.*;
 import java.awt.*;
 import java.io.*;
 public class View extends JFrame{
+    private JPanel mainScreen;
+    private JPanel gameScreen;
     private JButton playButton = new JButton("Play");
     public View() {
         super();
@@ -28,6 +30,20 @@ public class View extends JFrame{
     }
     void addPlayListener(ActionListener playButtonListener){ //basically a setter/getter for the actionlistener.
         playButton.addActionListener(playButtonListener);
+    }
+
+    public JPanel getMainScreen(){
+        return this.mainScreen;
+    }
+    public void setMainScreen(JPanel mainScreen){
+        this.mainScreen = mainScreen;
+    }
+
+    public JPanel getGameScreen(){
+        return this.gameScreen;
+    }
+    public void setGameScreen(JPanel gameScreen){
+        this.gameScreen = gameScreen;
     }
     public static void main(String[] args) {
         new View();
