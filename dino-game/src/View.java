@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.*;
 import java.io.*;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
+
 public class View extends JFrame{
     private JPanel mainScreen;
     private JPanel gameScreen;
@@ -23,12 +26,22 @@ public class View extends JFrame{
         gameScreen.setSize(600,400);
         this.add(mainScreen);
         this.add(gameScreen);
+        gameScreen.setBackground(Color.blue);
+        mainScreen.setBackground(Color.red);
         mainScreen.add(playButton);
         playButton.setSize(20,20);
+
+        /*playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("pressed");
+                           }
+        });*/
+
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    void addPlayListener(ActionListener playButtonListener){ //basically a setter/getter for the actionlistener.
+    public void addPlayListener(ActionListener playButtonListener) { //basically a setter/getter for the actionlistener.
         playButton.addActionListener(playButtonListener);
     }
 

@@ -3,18 +3,20 @@ import java.awt.event.ActionListener;
 
 public class Control {
     //this class contains the listeners that record user input (such as key presses)
-    private Main gameModel;
-    private View gameview;
+    private Model gameModel = new Model();
+    private View gameview = new View();
 
-    public void gameController(Main gameModel, View gameview){
+    public void gameController(Model gameModel, View gameview){
         this.gameModel = gameModel;
         this.gameview = gameview;
+        this.gameview.addPlayListener(new playListenerClass());
+    }
+    class playListenerClass implements ActionListener{ //java wants a new class for some reason
 
-        this.gameview.addPlayListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("pressed");
+        }
     }
 }
+
