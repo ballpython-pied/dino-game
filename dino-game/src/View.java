@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import java.awt.event.ItemEvent;
 import java.util.*;
 import java.awt.*;
 import java.io.*;
@@ -11,15 +12,19 @@ import java.io.*;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 
 public class View extends JFrame{
-    private JPanel masterScreen;
-    private JPanel mainScreen;
-    private JPanel gameScreen;
+
+    final static String GAMESCREEN = "the gamescreen";
+    final static String MAINSCREEN = "the mainscreen";
+
     private JButton playButton = new JButton("Play");
+    JPanel mainScreen = new JPanel();
+    JPanel gameScreen = new JPanel();
+    JPanel masterScreen = new JPanel(new CardLayout());
+    CardLayout cl = (CardLayout)(masterScreen.getLayout());
     public View() {
         super();
-        JPanel mainScreen = new JPanel();
-        JPanel gameScreen = new JPanel();
-        JPanel masterScreen = new JPanel();
+
+
 
         this.setLayout(null);
         this.setSize(600,400);
@@ -27,8 +32,8 @@ public class View extends JFrame{
         gameScreen.setSize(600,400);
         masterScreen.setSize(600,400);
         this.add(masterScreen);
-        masterScreen.add(mainScreen);
-        masterScreen.add(gameScreen);
+        masterScreen.add(mainScreen, MAINSCREEN);
+        masterScreen.add(gameScreen, GAMESCREEN);
         gameScreen.setBackground(Color.blue);
         mainScreen.setBackground(Color.red);
         mainScreen.add(playButton);
@@ -70,11 +75,14 @@ public class View extends JFrame{
     }
 
     public void switchFrames(){
-        this.masterScreen = new JPanel();
-        this.masterScreen.setComponentZOrder(this.gameScreen,0);
-        this.masterScreen.setComponentZOrder(this.mainScreen,1);
+        cl.show(masterScreen, GAMESCREEN);
         this.gameScreen.setBackground(Color.blue);
         System.out.println("Switched");
+    }
+
+    public void itemStateChanged(ItemEvent evt) {
+        CardLayout cl = (CardLayout)(masterScreen.getLayout());
+        cl.show(masterScreen, (String)evt.getItem());
     }
     public static void main(String[] args) {
         new View();
