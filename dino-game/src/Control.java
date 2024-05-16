@@ -12,10 +12,12 @@ public class Control {
         this.gameview.addPlayListener(new playListenerClass());
     }
     class playListenerClass implements ActionListener{ //java wants a new class for some reason
-
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("pressed");
+            gameview.setGameScreen();
+            gameview.setMainScreen();
+            gameview.switchFrames();
         }
     }
 }

@@ -11,6 +11,7 @@ import java.io.*;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 
 public class View extends JFrame{
+    private JPanel masterScreen;
     private JPanel mainScreen;
     private JPanel gameScreen;
     private JButton playButton = new JButton("Play");
@@ -18,14 +19,16 @@ public class View extends JFrame{
         super();
         JPanel mainScreen = new JPanel();
         JPanel gameScreen = new JPanel();
-
+        JPanel masterScreen = new JPanel();
 
         this.setLayout(null);
         this.setSize(600,400);
         mainScreen.setSize(600,400);
         gameScreen.setSize(600,400);
-        this.add(mainScreen);
-        this.add(gameScreen);
+        masterScreen.setSize(600,400);
+        this.add(masterScreen);
+        masterScreen.add(mainScreen);
+        masterScreen.add(gameScreen);
         gameScreen.setBackground(Color.blue);
         mainScreen.setBackground(Color.red);
         mainScreen.add(playButton);
@@ -51,12 +54,27 @@ public class View extends JFrame{
     public void setMainScreen(JPanel mainScreen){
         this.mainScreen = mainScreen;
     }
+    public void setMainScreen(){
+        this.mainScreen = new JPanel();
+    }
 
     public JPanel getGameScreen(){
         return this.gameScreen;
     }
     public void setGameScreen(JPanel gameScreen){
         this.gameScreen = gameScreen;
+    }
+
+    public void setGameScreen(){
+        this.gameScreen = new JPanel();
+    }
+
+    public void switchFrames(){
+        this.masterScreen = new JPanel();
+        this.masterScreen.setComponentZOrder(this.gameScreen,0);
+        this.masterScreen.setComponentZOrder(this.mainScreen,1);
+        this.gameScreen.setBackground(Color.blue);
+        System.out.println("Switched");
     }
     public static void main(String[] args) {
         new View();
