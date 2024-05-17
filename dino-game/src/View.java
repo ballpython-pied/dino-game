@@ -27,10 +27,10 @@ public class View extends JFrame{
 
 
         this.setLayout(null);
-        this.setSize(600,400);
-        mainScreen.setSize(600,400);
-        gameScreen.setSize(600,400);
-        masterScreen.setSize(600,400);
+        this.setSize(800,600);
+        mainScreen.setSize(800,600);
+        gameScreen.setSize(800,600);
+        masterScreen.setSize(800,600);
         this.add(masterScreen);
         masterScreen.add(mainScreen, MAINSCREEN);
         masterScreen.add(gameScreen, GAMESCREEN);
