@@ -20,6 +20,9 @@ public class View extends JFrame{
     JPanel mainScreen = new JPanel();
     JPanel gameScreen = new JPanel();
     JPanel masterScreen = new JPanel(new CardLayout());
+
+    ImageIcon dinoimage = new ImageIcon("visual/Dino Game Graphics/dino.jpg");
+    JLabel dino = new JLabel();
     CardLayout cl = (CardLayout)(masterScreen.getLayout());
     public View() {
         super();
@@ -28,16 +31,23 @@ public class View extends JFrame{
 
         this.setLayout(null);
         this.setSize(800,600);
+
         mainScreen.setSize(800,600);
         gameScreen.setSize(800,600);
+        gameScreen.setLayout(null); //you need to set the null layout to get absolute positions.
         masterScreen.setSize(800,600);
         this.add(masterScreen);
         masterScreen.add(mainScreen, MAINSCREEN);
         masterScreen.add(gameScreen, GAMESCREEN);
         gameScreen.setBackground(Color.blue);
+
         mainScreen.setBackground(Color.red);
         mainScreen.add(playButton);
         playButton.setSize(20,20);
+
+        dino.setIcon(new ImageIcon("C:\\Users\\rian.goldie\\Documents\\GitHub\\dino-game\\dino-game\\src\\visual\\Dino Game Graphics\\dino2.jpg"));
+        dino.setBounds(50,200,200,200);
+        gameScreen.add(dino);
 
         /*playButton.addActionListener(new ActionListener() {
             @Override
@@ -47,6 +57,7 @@ public class View extends JFrame{
         });*/
 
         this.setVisible(true);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void addPlayListener(ActionListener playButtonListener) { //basically a setter/getter for the actionlistener.
