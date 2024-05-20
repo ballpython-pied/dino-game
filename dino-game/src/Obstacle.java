@@ -21,11 +21,31 @@ public class Obstacle {
     JLabel label = new JLabel(imageIcon);
 
     JLabel[] gifs = new JLabel[25];
-    //internet told me to use jlabels for gifs so this is the array of gifs to circle through for the obstacles
+    //internet told me to use JLabels for gifs so this is the array of gifs to circle through for the obstacles
 
     double x;
 
     double y;
+
+    double height;
+
+    double width;
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
 
     public Obstacle() throws IOException {
     }
