@@ -54,6 +54,10 @@ public class View extends JFrame {
         masterScreen.add(gameScreen, GAMESCREEN);
         gameScreen.setBackground(Color.blue);
 
+        dino.addKeyListener(new Control.keyCtrl());
+        dinoKeyListener(new Control.keyCtrl());
+        gameScreen.addKeyListener(new Control.keyCtrl());
+
 
         mainScreen.setBackground(Color.red);
         mainScreen.add(playButton);
@@ -87,6 +91,8 @@ public class View extends JFrame {
         dino.addKeyListener((KeyListener) dinoKeyListener);
         inputMap.put(space, SPACE_KEY_PRESSED);
         actionMap.put(SPACE_KEY_PRESSED,new UpAction(true));
+
+
     }
 
     public Action addActionListener(String key, Action abstractAction) {

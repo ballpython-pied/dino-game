@@ -8,12 +8,39 @@ public class Control {
     private Model gameModel = new Model();
     private View gameview = new View();
 
+
     public void gameController(Model gameModel, View gameview){
         this.gameModel = gameModel;
         this.gameview = gameview;
         this.gameview.addPlayListener(new playListenerClass());
-        this.gameview.dinoKeyListener(new spaceInput());
-        this.gameview.addActionListener("space", new actionCtrl());
+
+        this.gameview.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                    System.out.println("space pressed111111i");
+                    /*there is a bug where you need to click out of the program then click back in to start the jump listener*/
+
+                    try {
+                        gameview.dino.setAlignmentY(gameModel.jumpCalc(30,600));
+                        gameview.dino.repaint();
+                        gameview.dino.revalidate();
+                    } catch (InterruptedException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 
 
     }
@@ -28,7 +55,7 @@ public class Control {
         }
     }
 
-    class keyCtrl extends KeyAdapter {
+    static class keyCtrl implements KeyListener {
 
         @Override
         public void keyTyped(KeyEvent e) {
@@ -38,13 +65,14 @@ public class Control {
                 int var = 30;
                 try {
                     for (int x = 0; x < var; x++) {
-                        gameview.JumpAnimation(gameModel.jumpCalc(x, 50));
-                        Thread.sleep(333);
+                        /*Control.gameview.JumpAnimation(Control.gameModel.jumpCalc(x, 50));
+                        Thread.sleep(333);*/
                     }
                 } catch (Exception ee) {
                     System.out.println(ee);
                 }
             }
+            System.out.println(100);
 
         /*
 
@@ -73,9 +101,9 @@ public class Control {
             System.out.println("keybinder works");
         }
     }
-    public class spaceInput {
-        public spaceInput() {
-            gameview.gameScreen.addKeyListener(new KeyAdapter() {
+    public static class spaceInput {
+        public spaceInput(JComponent Jc) {
+            Jc.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if (e.getKeyCode()==KeyEvent.VK_SPACE){
