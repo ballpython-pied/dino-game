@@ -126,6 +126,7 @@ public class View extends JFrame {
     public void switchFrames() {
         cl.show(masterScreen, GAMESCREEN);
         this.gameScreen.setBackground(Color.blue);
+        this.gameScreen.setVisible(true);
         System.out.println("Switched");
     }
 

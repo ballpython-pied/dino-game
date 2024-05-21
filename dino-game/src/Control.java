@@ -27,11 +27,13 @@ public class Control {
                     /*there is a bug where you need to click out of the program then click back in to start the jump listener*/
 
                     try {
-                        System.out.println("space pressed111111i");
-                        for(int x = 0; x<30;x++){
-                        gameview.dino.setBounds(50, gameModel.jumpCalc(x,600), 200,200);
-                        gameview.dino.repaint();
-                        gameview.dino.revalidate();
+                        if(gameview.gameScreen.isVisible()) {
+                            System.out.println("space pressed111111i");
+                            for (int x = 0; x < 30; x++) {
+                                gameview.dino.setBounds(50, gameModel.jumpCalc(x, 600), 200, 200);
+                                gameview.dino.repaint();
+                                gameview.dino.revalidate();
+                            }
                         }
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
