@@ -5,8 +5,8 @@ import java.security.Key;
 
 public class Control {
     //this class contains the listeners that record user input (such as key presses)
-    private Model gameModel = new Model();
-    private View gameview = new View();
+    private Model gameModel;
+    private View gameview;
 
 
     public void gameController(Model gameModel, View gameview){
@@ -23,14 +23,17 @@ public class Control {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_SPACE){
-                    System.out.println("space pressed111111i");
+
                     /*there is a bug where you need to click out of the program then click back in to start the jump listener*/
 
                     try {
-                        gameview.dino.setAlignmentY(gameModel.jumpCalc(30,600));
+                        System.out.println("space pressed111111i");
+                        for(int x = 0; x<30;x++){
+                        gameview.dino.setBounds(50, gameModel.jumpCalc(x,600), 200,200);
                         gameview.dino.repaint();
                         gameview.dino.revalidate();
-                    } catch (InterruptedException ex) {
+                        }
+                    } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
                 }
