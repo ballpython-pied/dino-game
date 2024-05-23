@@ -54,9 +54,10 @@ public class View extends JFrame {
         masterScreen.add(gameScreen, GAMESCREEN);
         gameScreen.setBackground(Color.blue);
 
-        dino.addKeyListener(new Control.keyCtrl());
-        dinoKeyListener(new Control.keyCtrl());
-        gameScreen.addKeyListener(new Control.keyCtrl());
+       //dino.addKeyListener(new Control.keyCtrl());
+        //
+        // dinoKeyListener(new Control.keyCtrl());
+       //gameScreen.addKeyListener(new Control.keyCtrl());
 
 
         mainScreen.setBackground(Color.red);
