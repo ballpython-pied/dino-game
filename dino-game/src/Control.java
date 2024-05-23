@@ -7,7 +7,7 @@ public class Control {
     //this class contains the listeners that record user input (such as key presses)
     private Model gameModel;
     private View gameview;
-    int jumpcount = 30;
+    int count = 28;
 
 
     public void gameController(Model gameModel, View gameview){
@@ -25,29 +25,13 @@ public class Control {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_SPACE){
 
-                    View.jump=true;
                     /*there is a bug where you need to click out of the program then click back in to start the jump listener*/
+                    gameview.jump = true;
                     try {
+                        System.out.println("space pressed111111i");
+                        gameModel.jumpCalc(gameview);
 
-                        if (jumpcount == 0){
-                            jumpcount = 30;
-                        }
-                        while(View.jump) {
-                            System.out.println("space pressed111111i");
-
-                            gameview.dino.setLocation(50, gameModel.jumpCalc(400));
-                            gameview.dino.repaint(50,gameModel.jumpCalc(400), 200,200);
-
-                            System.out.println(gameModel.jumpCalc( 200));
-
-
-
-
-                            }
-                        }
-
-
-                    catch (Exception ex) {
+                    } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
                 }
@@ -118,19 +102,19 @@ public class Control {
             System.out.println("keybinder works");
         }
     }
-    /*public static class spaceInput {
+   /* public static class spaceInput {
         public spaceInput(JComponent Jc) {
             Jc.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if (e.getKeyCode()==KeyEvent.VK_SPACE){
-                        View.jump = true;
+                        gameview.jump = true;
                     }
                 }
             });
 
 
     }
-    }*/
+    } */
 }
 

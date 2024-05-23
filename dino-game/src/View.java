@@ -20,7 +20,7 @@ public class View extends JFrame {
     private static final String SPACE_KEY_PRESSED = "space pressed";
     private static final int UP_TIMER_DELAY = 50;
 
-    public static Boolean jump = false;
+    public Boolean jump = false;
 
     private JButton playButton = new JButton("Play");
     JPanel mainScreen = new JPanel();
@@ -40,7 +40,6 @@ public class View extends JFrame {
 
     public View() {
         super();
-
 
         this.setLayout(null);
         this.setSize(800, 600);
