@@ -6,6 +6,7 @@ public class Main {
         Control control = new Control();
         Model model = new Model();
         control.gameController(model, new View());
+
         //https://www.youtube.com/watch?v=dTVVa2gfht8 i like this video to learn for MVC
 
     }

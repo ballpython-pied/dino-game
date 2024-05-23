@@ -8,6 +8,8 @@ public class Control {
     private Model gameModel;
     private View gameview;
     int count = 28;
+    private Timer timer;
+
 
 
     public void gameController(Model gameModel, View gameview){
@@ -15,7 +17,9 @@ public class Control {
         this.gameview = gameview;
         this.gameview.addPlayListener(new playListenerClass());
 
+
         this.gameview.addKeyListener(new KeyListener() {
+
             @Override
             public void keyTyped(KeyEvent e) {
 
@@ -36,6 +40,7 @@ public class Control {
                     }
                 }
             }
+
 
             @Override
             public void keyReleased(KeyEvent e) {
